@@ -7,19 +7,19 @@ A Symfony project created on September 23, 2016, 4:05 pm By LotfiDev
 
 Tache ajouté.
 ====
-1) integration reconfiguration de la template sous twig
-2) creation et configuration du bundle BlogBundle
-3) Installtion et configuration du bundle FosJsRouting
-4) Lister tous les articles en utilisant angularJs
-5) recherche instannnée des articles par "titre article"
-6) creation et configuration du bundle ClientBundle
-7) installation et configuration du Bundle FOSUserBundle
-8) Systeme de commentaire avec angularJs
-9) installation et configuration du bundle AdminBundle
-10) surchage des view du bundle FOSUserBundle
-11) surchage du controller et form "registrationType" pour ne pas avoir des probleme lors du lancement du composer update or install
-12) Lister tous les articles, clients, commentaire et ajoutant la fonctionalité "supprimer"
-13) partage des droits d'accée entre l'admin et le simple client dans le fichier "security.yml"
+* integration reconfiguration de la template sous twig
+* creation et configuration du bundle BlogBundle
+* Installtion et configuration du bundle FosJsRouting
+* Lister tous les articles en utilisant angularJs
+* recherche instannnée des articles par "titre article"
+* creation et configuration du bundle ClientBundle
+* installation et configuration du Bundle FOSUserBundle
+* Systeme de commentaire avec angularJs
+* installation et configuration du bundle AdminBundle
+* surchage des view du bundle FOSUserBundle
+* surchage du controller et form "registrationType" pour ne pas avoir des probleme lors du lancement du composer update or install
+* Lister tous les articles, clients, commentaire et ajoutant la fonctionalité "supprimer"
+* partage des droits d'accée entre l'admin et le simple client dans le fichier "security.yml"
 
 Installation.
 ====
