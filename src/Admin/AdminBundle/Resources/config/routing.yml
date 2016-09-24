@@ -1,0 +1,15 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+
+admin_article:
+    path:     /article
+    defaults: { _controller: AdminBundle:Default:article }
+
+admin_article_suppression:
+    path:     /article/supprimer/{id}
+    defaults: { _controller: AdminBundle:Default:articleSuppression }
+
+admin_commentaire:
+    path:     /commentaire
+    defaults: { _controller: AdminBundle:Default:commentaire }

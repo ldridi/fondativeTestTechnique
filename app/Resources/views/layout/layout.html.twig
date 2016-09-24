@@ -9,28 +9,33 @@
         <link href="{{ asset('css/style.css') }}" rel='stylesheet' type='text/css' />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
-        <script type="application/x-javascript">
-            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        </script>
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
-    <body>
+    <body ng-app="MonBlogApp">
         <div class="header">
             <div class="wrap">
                 <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" title="pinbal" style="height:70px;"/></a>
+                    <a href="index.html"><img src="{{ asset('images/logo.png') }}" title="pinbal" style="height:70px;"/></a>
                 </div>
                 <div class="top-searchbar" style="margin-top:5px;">
                     <form>
-                        <input type="text" />
+                        <input type="text" ng-model="recherche" placeholder="rechercher un article par son nom"/>
                     </form>
                 </div>
                 <div class="userinfo">
                     <div class="user">
                         <ul>
-                            <li><a href="#"><img src="images/user-pic.png" title="user-name" /><span>Dridi Lotfi</span></a></li>
+                            <li><img src="{{ asset('images/user-pic.png') }}" title="user-name" />
+                                {% if app.user %}
+                                    <span>{{ app.user.username }}</span>
+                                    &nbsp;&nbsp;<span><a href="{{ path('fos_user_security_logout') }}"> Deconnexion</a></span></li>
+                                {% else %}
+                                    <span><a href="{{ path('fos_user_security_login') }}"> Se Connecter</a></span>
+                                {% endif %}
+
                         </ul>
                     </div>
                 </div>
@@ -38,7 +43,9 @@
             </div>
         </div>
         {% block body %}{% endblock %}
-
+        <script src="{{ asset('js/angular.min.js') }}"></script>
+        <script src="{{ asset('js/angular-animate.min.js') }}"></script>
+        <script src="{{ asset('angularJs/MonBlogApp.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="{{ asset('js/jquery.imagesloaded.js') }}"></script>
@@ -96,6 +103,9 @@
                 $window.bind('scroll.wookmark', onScroll);
             })(jQuery);
         </script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

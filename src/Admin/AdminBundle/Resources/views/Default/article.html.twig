@@ -1,0 +1,43 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+    <div class="content" ng-controller="articleController">
+        <div class="wrap">
+            <div id="main" role="main">
+                <div class="row">
+                    <div class="col-md-2">
+                        <ul>
+                            <li><a href="{{ path('admin_homepage') }}"> Liste des CLient </a></li>
+                            <li><a href="{{ path('admin_article') }}"> Liste des Artticles </a></li>
+                            <li><a href="{{ path('admin_commentaire') }}"> Liste des Commentaires </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-10">
+                        <h1>Liste des articles</h1>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td> Image </td>
+                                <td> Titre </td>
+                                <td> Description </td>
+                                <td> Date </td>
+                                <td> operation </td>
+                            </tr>
+                            {% for article in articles %}
+                                <tr>
+                                    <td width="100"> <img src="{{ asset(article.image.webPath) }}" class="img-responsive center-block" style="width: 100px;height:50px;">  </td>
+                                    <td> {{ article.titreArticle }} </td>
+                                    <td> {{ article.descriptionArticle }} </td>
+                                    <td> {{ article.dateArticle|date('m-d-y') }} </td>
+                                    <td>
+                                        <a href="{{ path('admin_article_suppression', {'id':article.id}) }}">
+                                            <button class="btn btn-sm btn-danger">Supprimer</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

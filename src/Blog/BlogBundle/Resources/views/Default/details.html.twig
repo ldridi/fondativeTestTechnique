@@ -1,0 +1,82 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+   <div class="content" ng-controller="detailsArticleController">
+      <div class="wrap">
+
+         <div id="main" role="main">
+            <div class="row">
+               <div class="col-md-9">
+                  <div class="single-page-artical">
+                     <div class="artical-content">
+                        <img src="{{ asset(article.image.webPath) }}" title="banner1">
+                        <h3><a href="#">{{ article.titreArticle }}</a></h3>
+
+                        <input type="hidden" id="recupId" value="{{ article.id }}">
+                        <p>
+                           {{ article.descriptionArticle }}
+                        </p>
+
+
+                     </div>
+                     <div class="clear"> </div>
+                  </div>
+                  <div class="comment-section">
+                     <div class="grids_of_2">
+                        <h2>Les Commentaires</h2>
+                        <div class="grid1_of_2">
+                           <div class="grid_img">
+                              <a href=""><img src="{{ asset('images/pic10.jpg') }}" alt=""></a>
+                           </div>
+                           <div class="grid_text">
+                              <h4 class="style1 list"><a href="#">Uku Mason</a></h4>
+                              <h3 class="style">march 2, 2013 - 12.50 AM</h3>
+                              <p class="para top"> All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+
+                           </div>
+                           <div class="clear"></div>
+                        </div>
+
+                        {% if is_granted('ROLE_USER') %}
+                        <div class="artical-commentbox">
+                           <h2>Laisser un commentaire</h2>
+                           <div class="table-form">
+
+                                 <div>
+                                    <label>Message <span>*</span></label>
+                                    <textarea class="form-control" id="texteComment"> </textarea>
+                                 </div>
+
+                              <button class="btn btn-sm btn-default" ng-click="addComment()">Envoyer</button>
+
+                           </div>
+                           <div class="clear"> </div>
+                        </div>
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="thumbnail">
+                     <img src="{{ asset('images/back.jpg') }}" alt="..." style="height: 200px;">
+                     <div class="caption">
+                        <h3 class="text-center">Article 1</h3>
+                        <p class="text-center">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <p>
+                           <a href="" class="btn btn-sm btn-primary btn-block" role="button">
+                              <i class="glyphicon glyphicon-eye-open"></i> Lire l'article
+                           </a>
+                        </p>
+                        <h6><i>Publié le : 23-09-2016</i></h6>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('angularJs/Controllers/articleController.js') }}"></script>
+{% endblock %}

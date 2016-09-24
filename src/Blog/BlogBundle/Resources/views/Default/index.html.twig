@@ -1,80 +1,24 @@
 {% extends 'layout/layout.html.twig' %}
 {% block body %}
-    <div class="content">
+    <div class="content" ng-controller="articleController">
         <div class="wrap">
             <div id="main" role="main">
                 <div class="row">
-                    <div class="col-md-3">
+
+                    <div class="col-md-3" ng-repeat="article in articles | filter:{titreArticle:recherche}" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/back.jpg') }}" alt="...">
+                            <img ng-src="# article.imageArticle #" alt="..." style="height: 200px;">
                             <div class="caption">
-                                <h3>Article 1</h3>
-                                <p class="text-small">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum cumque dolores et impedit itaque vel voluptatem voluptates. Alias, consequatur dolor expedita ipsam magni, odio perferendis quasi quis repellat sed, vel!
+                                <h3 class="text-center"> # article.titreArticle # </h3>
+                                <p class="text-center">
+                                    # article.descriptionArticle #
                                 </p>
                                 <p>
-                                    <a href="#" class="btn btn-primary btn-block" role="button">
-                                        <i class="glyphicon glyphicon-eye-open"></i> Consulter Plus
+                                    <a href="{{ app.request.getBaseURL() }}/article/details/#article.id#" class="btn btn-sm btn-primary btn-block" role="button">
+                                        <i class="glyphicon glyphicon-eye-open"></i> Lire l'article
                                     </a>
                                 </p>
-                                <p>
-                                    Publié le : 23-09-2016
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="{{ asset('images/back.jpg') }}" alt="...">
-                            <div class="caption">
-                                <h3>Article 1</h3>
-                                <p class="text-small">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum cumque dolores et impedit itaque vel voluptatem voluptates. Alias, consequatur dolor expedita ipsam magni, odio perferendis quasi quis repellat sed, vel!
-                                </p>
-                                <p>
-                                    <a href="#" class="btn btn-primary btn-block" role="button">
-                                        <i class="glyphicon glyphicon-eye-open"></i> Consulter Plus
-                                    </a>
-                                </p>
-                                <p>
-                                    Publié le : 23-09-2016
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="{{ asset('images/back.jpg') }}" alt="...">
-                            <div class="caption">
-                                <h3>Article 1</h3>
-                                <p class="text-small">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum cumque dolores et impedit itaque vel voluptatem voluptates. Alias, consequatur dolor expedita ipsam magni, odio perferendis quasi quis repellat sed, vel!
-                                </p>
-                                <p>
-                                    <a href="#" class="btn btn-primary btn-block" role="button">
-                                        <i class="glyphicon glyphicon-eye-open"></i> Consulter Plus
-                                    </a>
-                                </p>
-                                <h6><i>Publié le : 23-09-2016</i></h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="{{ asset('images/back.jpg') }}" alt="...">
-                            <div class="caption">
-                                <h3>Article 1</h3>
-                                <p class="text-small">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum cumque dolores et impedit itaque vel voluptatem voluptates. Alias, consequatur dolor expedita ipsam magni, odio perferendis quasi quis repellat sed, vel!
-                                </p>
-                                <p>
-                                    <a href="#" class="btn btn-primary btn-block" role="button">
-                                        <i class="glyphicon glyphicon-eye-open"></i> Consulter Plus
-                                    </a>
-                                </p>
-                                <p>
-                                    Publié le : 23-09-2016
-                                </p>
+                                <h6><i>Publié le : # article.dateArticle #</i></h6>
                             </div>
                         </div>
                     </div>
@@ -82,4 +26,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('angularJs/Controllers/articleController.js') }}"></script>
 {% endblock %}

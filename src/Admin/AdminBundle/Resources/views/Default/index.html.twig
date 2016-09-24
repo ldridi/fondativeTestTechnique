@@ -1,0 +1,42 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+    <div class="content" ng-controller="articleController">
+        <div class="wrap">
+            <div id="main" role="main">
+                <div class="row">
+                    <div class="col-md-2">
+                        <ul>
+                            <li><a href="{{ path('admin_homepage') }}"> Liste des CLient </a></li>
+                            <li><a href="{{ path('admin_article') }}"> Liste des Artticles </a></li>
+                            <li><a href="{{ path('admin_commentaire') }}"> Liste des Commentaires </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-10">
+                        <h1>Liste des clients</h1>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td> Username </td>
+                                <td> Nom </td>
+                                <td> Prenom </td>
+                                <td> Adresse </td>
+                                <td> operation </td>
+                            </tr>
+                            {% for user in users %}
+                                <tr>
+                                    <td> {{ user.username }} </td>
+                                    <td> {{ user.nomClient }} </td>
+                                    <td> {{ user.prenomClient }} </td>
+                                    <td> {{ user.adresseClient }} </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                                        <button class="btn btn-sm btn-reverse">Bloqué</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

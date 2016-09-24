@@ -1,3 +1,19 @@
 blog_homepage:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
+
+getAllArticle:
+    path:     /getAllArticle
+    defaults: { _controller: BlogBundle:Default:getAllArticle }
+    options:
+        expose: true
+
+article_details:
+    path:     /article/details/{id}
+    defaults: { _controller: BlogBundle:Default:details }
+
+addComment:
+    path:     /article/details/addComment
+    defaults: { _controller: BlogBundle:Default:details }
+    options:
+        expose: true
